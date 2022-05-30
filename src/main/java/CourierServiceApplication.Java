@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 class CourierServiceApplication {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         PackageService packageService = new PackageService();
         VehicleService vehicleService = new VehicleService(packageService);
         PrintService printService = new PrintService();
@@ -21,7 +21,7 @@ class CourierServiceApplication {
             int weight = scanner.nextInt();
             int distance = scanner.nextInt();
             String offerCode = scanner.next();
-            packageService.add(id, weight, distance, offerCode);
+            packageService.add(id, weight, distance, offerCode,baseDeliveryCost);
         }
 
         int noOfVehicles = scanner.nextInt();

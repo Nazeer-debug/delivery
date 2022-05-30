@@ -7,15 +7,15 @@ public class PackageTest {
 
     @Test
     void shouldReturnTotalCostZero() {
-        Package p = new Package("PKG01", 0, 0, "OFR001");
+        Package p = new Package("PKG01", 0, 0, "OFR001",100);
 
-        Assertions.assertEquals(0, p.getCost());
+        Assertions.assertEquals(100, p.getCost());
     }
 
     @Test
     void shouldReturnTotalCost() {
-        Package p = new Package("PKG01", 5, 5, "OFR001");
+        Package p = new Package("PKG01", 5, 5, "OFR001",100);
 
-        Assertions.assertEquals(75, p.getCost());
+        Assertions.assertEquals(175, p.getCost());
     }
 }

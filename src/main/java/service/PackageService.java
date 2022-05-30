@@ -15,12 +15,12 @@ public class PackageService {
         this.offerService = new OfferService();
     }
 
-    public void add(String id, int weight, int distance, String offerCode) {
-        this.packages.add(getPackage(id, weight, distance, offerCode));
+    public void add(String id, int weight, int distance, String offerCode, int baseDeliveryCost) {
+        this.packages.add(getPackage(id, weight, distance, offerCode, baseDeliveryCost));
     }
 
-    private Package getPackage(String id, int weight, int distance, String offerCode) {
-        Package p = new Package(id, weight, distance, offerCode);
+    private Package getPackage(String id, int weight, int distance, String offerCode, int baseDeliveryCost) {
+        Package p = new Package(id, weight, distance, offerCode, baseDeliveryCost);
         p.setDiscount(getDiscount(p));
         p.setCost(getTotalCost(p) - p.getDiscount());
         return p;

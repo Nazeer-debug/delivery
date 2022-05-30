@@ -34,8 +34,8 @@ class PrintServiceTest {
 
     @Test
     void shouldPrintThePackageDetails() {
-        Package p1 = new Package("PKG01", 5, 5, "OFR002");
-        Package p2 = new Package("PKG02", 5, 5, "OFR002");
+        Package p1 = new Package("PKG01", 5, 5, "OFR002",100);
+        Package p2 = new Package("PKG02", 5, 5, "OFR002",100);
 
         List<Package> packages = new ArrayList<>(List.of(p1, p2));
 

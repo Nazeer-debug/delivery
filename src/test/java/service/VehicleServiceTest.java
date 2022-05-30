@@ -34,10 +34,10 @@ class VehicleServiceTest {
     void shouldReturnZeroDeliveredPackagesIfPackagesIsEmpty() {
         vehicleService.add(2,70,10);
 
-        Package p1 = new Package("PKG01", 1, 1, "OFR001");
-        Package p2 = new Package("PKG02", 11, 2, "OFR002");
-        Package p3 = new Package("PKG03", 5, 3, "OFR003");
-        Package p4 = new Package("PKG05", 3, 5, "OFR005");
+        Package p1 = new Package("PKG01", 1, 1, "OFR001",100);
+        Package p2 = new Package("PKG02", 11, 2, "OFR002",100);
+        Package p3 = new Package("PKG03", 5, 3, "OFR003",100);
+        Package p4 = new Package("PKG05", 3, 5, "OFR005",100);
 
         when(packageService.getPackages()).thenReturn(List.of(p1,p2,p3,p4));
         when(packageService.getPackages(10)).thenReturn(List.of(p1,p3,p4));

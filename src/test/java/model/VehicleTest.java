@@ -32,8 +32,8 @@ public class VehicleTest {
 
     @Test
     void shouldReturnDeliveryRecordForPackages() {
-        Package p1 = new Package("PKG01", 1, 1, "OFR001");
-        Package p2 = new Package("PKG02", 11, 2, "OFR002");
+        Package p1 = new Package("PKG01", 1, 1, "OFR001",100);
+        Package p2 = new Package("PKG02", 11, 2, "OFR002",100);
 
         Map<String, Float> deliveredPackages = vehicle.deliver(List.of(p1, p2));
 

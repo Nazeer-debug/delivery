@@ -24,7 +24,7 @@ class PackageServiceTest {
 
     @Test
     void shouldReturnNoMaximumWeightedPackagesIfThereAreNoPackagesWithTargetWeight() {
-        packageService.add("PKG01", 10, 10, "OFR001");
+        packageService.add("PKG01", 10, 10, "OFR001",100);
 
         List<Package> packages = packageService.getPackages(5);
 
@@ -33,11 +33,11 @@ class PackageServiceTest {
 
     @Test
     void shouldReturnMaximumWeightedPackages() {
-        packageService.add("PKG01", 1, 1, "OFR001");
-        packageService.add("PKG02", 11, 2, "OFR002");
-        packageService.add("PKG03", 5, 3, "OFR003");
-        packageService.add("PKG04", 9, 4, "OFR004");
-        packageService.add("PKG05", 3, 5, "OFR005");
+        packageService.add("PKG01", 1, 1, "OFR001",100);
+        packageService.add("PKG02", 11, 2, "OFR002",100);
+        packageService.add("PKG03", 5, 3, "OFR003",100);
+        packageService.add("PKG04", 9, 4, "OFR004",100);
+        packageService.add("PKG05", 3, 5, "OFR005",100);
 
         List<Package> packages = packageService.getPackages(10);
 
@@ -49,10 +49,10 @@ class PackageServiceTest {
 
     @Test
     void shouldReturnPackageWithLessDistanceWhenTwoPackagesWeightsAreSame() {
-        packageService.add("PKG01", 120, 7, "OFR001");
-        packageService.add("PKG02", 120, 6, "OFR002");
-        packageService.add("PKG04", 1, 1, "OFR001");
-        packageService.add("PKG05", 11, 2, "OFR002");
+        packageService.add("PKG01", 120, 7, "OFR001",100);
+        packageService.add("PKG02", 120, 6, "OFR002",100);
+        packageService.add("PKG04", 1, 1, "OFR001",100);
+        packageService.add("PKG05", 11, 2, "OFR002",100);
 
         List<Package> packages = packageService.getPackages(140);
 

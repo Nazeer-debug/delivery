@@ -12,20 +12,20 @@ public class Package {
     private final int weight;
     private final int distance;
     private final String offerCode;
+    private final int baseDeliveryCost;
     private int cost;
     private int discount;
     private float deliveredTime;
 
-    public Package(String id, int weight, int distance, String offerCode) {
+    public Package(String id, int weight, int distance, String offerCode, int baseDeliveryCost) {
         this.id = id;
         this.weight = weight;
         this.distance = distance;
         this.offerCode = offerCode;
+        this.baseDeliveryCost = baseDeliveryCost;
     }
 
     public int getCost() {
-        final int baseDeliveryCost = 100;
-
         int totalCost = 0;
         totalCost += baseDeliveryCost;
         totalCost += COST_PER_DISTANCE * this.distance;
