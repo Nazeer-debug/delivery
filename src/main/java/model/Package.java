@@ -1,7 +1,6 @@
 package model;
 
 import lombok.Getter;
-import constants.*;
 
 import static constants.Constants.COST_PER_DISTANCE;
 import static constants.Constants.COST_PER_WEIGHT;
