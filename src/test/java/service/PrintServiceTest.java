@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class PrintServiceTest {
@@ -35,7 +36,7 @@ class PrintServiceTest {
         Package p1 = new Package("PKG01", 5, 5, "OFR002",100);
         Package p2 = new Package("PKG02", 5, 5, "OFR002",100);
 
-        List<Package> packages = new ArrayList<>(List.of(p1, p2));
+        List<Package> packages = new ArrayList<>(Arrays.asList(p1, p2));
 
         printService.print(packages);
 

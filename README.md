@@ -6,7 +6,11 @@ Courier Service Application is an application that delivers the packages and mai
 ## Usage
 
 ```
-run CourierServiceApplication.java
+mvn package
+```
+run the snapshot jar file in the generated directory target 
+```
+java -cp target/delivery-1.0-SNAPSHOT.jar CourierServiceApplication
 ```
 # Offer codes 
 calculated the discount based on these valid offer codes with the criteria of distance and weight
@@ -64,3 +68,8 @@ PKG3 0 2350 1.42
 PKG4 105 1395 0.85
 PKG5 0 2125 4.19
 ```
+
+# Dependencies
+- lombok
+- junit
+- mockito
