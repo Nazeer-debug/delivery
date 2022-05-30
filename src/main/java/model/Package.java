@@ -2,9 +2,6 @@ package model;
 
 import lombok.Getter;
 
-import static constants.Constants.COST_PER_DISTANCE;
-import static constants.Constants.COST_PER_WEIGHT;
-
 @Getter
 public class Package {
     private final String id;
@@ -25,10 +22,13 @@ public class Package {
     }
 
     public int getCost() {
+        final int costPerDistance = 5;
+        final int costPerWeight = 10;
+
         int totalCost = 0;
         totalCost += baseDeliveryCost;
-        totalCost += COST_PER_DISTANCE * this.distance;
-        totalCost += COST_PER_WEIGHT * this.weight;
+        totalCost += costPerDistance * this.distance;
+        totalCost += costPerWeight * this.weight;
 
         return totalCost;
     }
