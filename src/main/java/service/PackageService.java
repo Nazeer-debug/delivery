@@ -3,21 +3,27 @@ package service;
 import model.Package;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class PackageService {
     private final List<Package> packages;
     private final OfferService offerService;
-    private final PrintService printService;
 
     public PackageService() {
         this.packages = new ArrayList<>();
         this.offerService = new OfferService();
-        this.printService = new PrintService();
     }
 
-    public void add(Package p) {
-        this.packages.add(p);
+    public void add(String id, int weight, int distance, String offerCode) {
+        this.packages.add(getPackage(id, weight, distance, offerCode));
+    }
+
+    private Package getPackage(String id, int weight, int distance, String offerCode) {
+        Package p = new Package(id, weight, distance, offerCode);
+        p.setDiscount(getDiscount(p));
+        p.setCost(getTotalCost(p) - p.getDiscount());
+        return p;
     }
 
     private int getDiscount(Package p) {
@@ -29,9 +35,42 @@ public class PackageService {
         return p.getCost();
     }
 
-    public void print() {
+    public List<Package> getPackages() {
+        return packages;
+    }
+
+    public List<Package> getPackages(int weight) {
+
+        packages.sort(Comparator.comparing(Package::getWeight).thenComparing(Package::getDistance));
+
+        int totalWeight = 0;
+        List<Package> maxPackages = new ArrayList<>();
         for (Package p : packages) {
-            printService.print(p.getId(), getDiscount(p), getTotalCost(p));
+            if (totalWeight + p.getWeight() > weight) break;
+            else {
+                maxPackages.add(p);
+                totalWeight += p.getWeight();
+            }
         }
+        int maxWeight = totalWeight;
+        List<Package> maximumWeightedPackages = new ArrayList<>(maxPackages);
+        for (int j = 0; j < maxPackages.size(); j++) {
+            List<Package> temp = new ArrayList<>(maxPackages);
+            for (int i = maxPackages.size(); i < packages.size(); i++) {
+                temp.set(j, packages.get(i));
+                int sum = temp.stream().mapToInt(Package::getWeight).sum();
+                if (sum <= weight) {
+                    if (sum > maxWeight) {
+                        maxWeight = sum;
+                        maximumWeightedPackages = new ArrayList<>(temp);
+                    }
+                }
+            }
+        }
+        return maximumWeightedPackages;
+    }
+
+    public void remove(Package p) {
+        packages.removeIf(pack -> pack.getId().equals(p.getId()));
     }
 }

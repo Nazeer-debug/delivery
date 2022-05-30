@@ -33,6 +33,7 @@ public class OfferService {
     }
 
     private boolean isValidOfferCode(int distance, int weight, String appliedOfferCode) {
+        if (appliedOfferCode == null || appliedOfferCode.isEmpty()) return false;
         for (OfferCode offerCode : offerCodes) {
             if (offerCode.getCode().equals(appliedOfferCode)) {
                 Criteria criteria = offerCode.getCriteria();

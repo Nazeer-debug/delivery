@@ -14,7 +14,29 @@ class OfferServiceTest {
     }
 
     @Test
-    public void shouldReturnZeroIfOfferIsInvalid() {
+    void shouldReturnZeroDiscountIfOfferCodeIsNull() {
+        int weight = 5;
+        int distance = 5;
+        String offerCode = null;
+
+        int discount = offerService.getDiscount(distance, weight, offerCode);
+
+        Assertions.assertEquals(0, discount);
+    }
+
+    @Test
+    void shouldReturnZeroDiscountIfOfferCodeIsEmpty() {
+        int weight = 5;
+        int distance = 5;
+        String offerCode = "";
+
+        int discount = offerService.getDiscount(distance, weight, offerCode);
+
+        Assertions.assertEquals(0, discount);
+    }
+
+    @Test
+    public void shouldReturnZeroDiscountIfOfferIsInvalid() {
         int weight = 5;
         int distance = 5;
         String offerCode = "OFR001";
